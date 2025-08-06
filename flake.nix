@@ -3,7 +3,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
-  outputs = {}: 
+  outputs = { self }: 
   {
     nixosModules.default = import ./default.nix;
   };
