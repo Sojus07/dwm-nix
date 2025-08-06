@@ -21,8 +21,8 @@ static const char col_cyan[] = "#010101";
 
 static const char *colors[][3] = {
     /*               fg         bg         border   */
-    [SchemeNorm] = {col_gray3, col_gray1, col_gray1}, /* Normale Fenster */
-    [SchemeSel] = {col_gray4, col_cyan, col_gray2}, /* Ausgewähltes Fenster */
+    [SchemeNorm] = {col_gray3, col_gray1, col_gray1}, 
+    [SchemeSel] = {col_gray4, col_cyan, col_gray2}, 
 };
 
 /* tagging */
@@ -77,7 +77,7 @@ static const Layout layouts[] = {
   }
 
 static char dmenumon[2] =
-    "0"; /* component of dmenucmd, manipulated in spawn() */
+    "0"; 
 static const char *termcmd[] = {"alacritty", NULL};
 static const char *dmenucmd[] = {
     "dmenu_run", "-m",      dmenumon, "-fn",    dmenufont, "-nb",     col_gray1,
