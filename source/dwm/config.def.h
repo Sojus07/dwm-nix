@@ -38,6 +38,19 @@ static const Rule rules[] = {
     {"Gimp", NULL, NULL, 0, 1, -1},
 };
 
+#define SHCMD(cmd)                                                             \
+  {                                                                            \
+    .v = (const char *[]) { "/bin/sh", "-c", cmd, NULL }                       \
+  }
+
+static char dmenumon[2] =
+    "0"; 
+static const char *termcmd[] = {"alacritty", NULL};
+static const char *dmenucmd[] = {
+    "dmenu_run", "-m",      dmenumon, "-fn",    dmenufont, "-nb",     norm_bg,
+    "-nf",       norm_fg, "-sb",    norm_bg, "-sf",     norm_fg, NULL};
+
+
 /* layout(s) */
 static const float mfact = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster = 1;    /* number of clients in master area */
@@ -77,17 +90,6 @@ static const Layout layouts[] = {
       {MODKEY | ShiftMask, KEY, tag, {.ui = 1 << TAG}},                        \
       {MODKEY | ControlMask | ShiftMask, KEY, toggletag, {.ui = 1 << TAG}},
 
-#define SHCMD(cmd)                                                             \
-  {                                                                            \
-    .v = (const char *[]) { "/bin/sh", "-c", cmd, NULL }                       \
-  }
-
-static char dmenumon[2] =
-    "0"; 
-static const char *termcmd[] = {"alacritty", NULL};
-static const char *dmenucmd[] = {
-    "dmenu_run", "-m",      dmenumon, "-fn",    dmenufont, "-nb",     col_gray1,
-    "-nf",       col_gray3, "-sb",    col_cyan, "-sf",     col_gray4, NULL};
 static const char *upvol[] = {"wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@",
                               "5%+", NULL};
 static const char *downvol[] = {"wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@",
